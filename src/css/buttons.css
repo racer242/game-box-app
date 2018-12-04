@@ -1,0 +1,29 @@
+
+.info-box button {
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 1em;
+  padding-left: 2em;
+  padding-right: 2em;
+  border-radius: 0;
+
+}
+
+/*    Кнопки навигации    */
+
+.nav-button {
+  position: absolute;
+  display: block;
+  z-index: 10;
+  width: 10em;
+  height: 2em;
+  bottom: 1em;
+}
+
+#Prev.nav-button {
+  left: 1em;
+}
+
+#Next.nav-button {
+  right: 1em;
+}

@@ -1,0 +1,135 @@
+import React, { Component } from 'react';
+
+import mainReducer from './reducers/mainReducer'
+import settings from './configuration/Settings';
+import { screens } from './core/screenMap';
+import Container from './core/Container';
+import DataManager from './core/DataManager';
+import Dispatcher from './core/Dispatcher';
+import Control from './core/Control';
+
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+
+
+import './css/fonts.css';
+import './css/containers.css';
+import './css/buttons.css';
+import './css/popups.css';
+import './css/app.css';
+
+const Store = createStore(
+  mainReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+
+class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      width:0,
+      height:0,
+      windowWidth:0,
+      windowHeight:0,
+      left:0,
+      top: 0,
+      scale:1,
+    };
+
+    this.dataManager_completeHandler=this.dataManager_completeHandler.bind(this);
+    this.initHandler=this.initHandler.bind(this);
+    this.resizeHandler=this.resizeHandler.bind(this);
+  }
+
+  updateLayout() {
+    let windowInnerWidth=document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
+    let windowInnerHeight=document.documentElement.clientHeight || document.body.clientHeight || window.innerHeight;
+    let boxWidth=(windowInnerWidth>settings.maxWidth)?settings.maxWidth:(windowInnerWidth<settings.minWidth)?settings.minWidth:windowInnerWidth;
+    let boxHeight=(windowInnerHeight>settings.maxHeight)?settings.maxHeight:(windowInnerHeight<settings.minHeight)?settings.minHeight:windowInnerHeight;
+
+    let scale=Math.min(boxWidth/settings.nominalWidth,boxHeight/settings.nominalHeight);
+
+    // boxWidth=settings.nominalWidth*scale;
+    // boxHeight=settings.nominalHeight*scale;
+    // let boxLeft=(windowInnerWidth-boxWidth>>1)+settings.offsetX;
+    // let boxTop=(windowInnerHeight-boxHeight>>1)+settings.offsetY;
+    // if (boxLeft<0) boxLeft=0;
+    // if (boxTop<0) boxTop=0;
+
+    this.rootFontSize = Math.round(scale*settings.nominalRootFontSize);
+
+    window.rootFontSize=this.rootFontSize;
+
+    boxWidth=windowInnerWidth;
+    boxHeight=windowInnerHeight;
+
+    let boxLeft=settings.offsetX;
+    let boxTop=settings.offsetY;
+
+
+    this.setState({
+      ...this.state,
+      windowWidth:windowInnerWidth,
+      windowHeight:windowInnerHeight,
+      left:boxLeft,
+      top: boxTop,
+      width:boxWidth,
+      height:boxHeight,
+      scale:scale
+    });
+
+    Dispatcher.dispatch("onResize");
+
+  }
+
+  dataManager_completeHandler(data) {
+    Dispatcher.dispatch("onDataReady",data);
+  }
+
+  initHandler(event) {
+    this.updateLayout();
+  }
+
+  resizeHandler(event) {
+    this.updateLayout();
+  }
+
+  componentWillMount() {
+    window.addEventListener("load",this.initHandler);
+    window.addEventListener("resize",this.resizeHandler);
+  }
+
+  render() {
+    let root=document.getElementsByTagName('html')[0];
+    root.style['font-size']=this.rootFontSize+'px';
+
+    return (
+      <Provider store={Store}>
+        <Container
+          id="Container"
+          windowWidth={this.state.windowWidth}
+          windowHeight={this.state.windowHeight}
+          left={this.state.left}
+          top={this.state.top}
+          width={this.state.width}
+          height={this.state.height}
+          scale={this.state.scale}
+          store={Store}
+        >
+          <DataManager
+            onComplete={this.dataManager_completeHandler}
+           />
+          <Control
+            store={Store}
+          />
+        </Container>
+      </Provider>
+    );
+  }
+
+
+}
+
+export default App;

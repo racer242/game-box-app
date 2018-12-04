@@ -1,0 +1,333 @@
+
+/*    Попапы   */
+
+.large-popup {
+  position: absolute;
+  display: block;
+  border-radius: .6em;
+  border-style: none;
+  background-color: #fff;
+  text-align: center;
+  padding: 1em;
+  max-width: 30%;
+  top: 42%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+
+  animation: popup-appear .5s ease-out;
+}
+
+
+@keyframes popup-appear {
+  0% { opacity: 0; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.large-popup small {
+  font-size: .8em;
+  display: block;
+}
+
+.large-popup h1 {
+  font-size: 1em;
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+
+.large-popup p {
+  font-size: .8em;
+  margin-top: 1em;
+}
+
+.large-popup button {
+  font-size: .8em;
+  font-weight: bold;
+  color: #fff;
+  border-radius: .4em;
+  border-style: solid;
+  border-width: 0.3em;
+  border-color: #fff;
+  background-color: #74c819;
+
+  outline-color: rgba(255,255,255,0.5);
+
+  padding-top: 0.45em;
+  padding-bottom: 0.45em;
+  padding-left: 2.5em;
+  padding-right: 2.5em;
+
+  margin-top: 1em;
+
+  -webkit-box-shadow: 0px 5px 50px 0px rgba(140,212,136,0.4);
+  -moz-box-shadow: 0px 5px 50px 0px rgba(140,212,136,0.4);
+  box-shadow: 0px 5px 50px 0px rgba(140,212,136,0.4);
+  cursor: pointer;
+}
+
+.large-popup button:hover {
+  border-color: #eef9ee;
+  -webkit-box-shadow: 0px 5px 50px 0px rgba(140,212,136,0.7);
+  -moz-box-shadow: 0px 5px 50px 0px rgba(140,212,136,0.7);
+  box-shadow: 0px 5px 50px 0px rgba(140,212,136,0.7);
+}
+
+.small-popup {
+  z-index: 2;
+}
+
+.popup-button {
+  font-size: .7em;
+  font-weight: normal;
+  text-align: left;
+  color: #fff;
+  border-radius: .3em;
+  border-width: 0px;
+  background-color: #68b811;
+
+  padding-top: .5em;
+  padding-bottom: .5em;
+  padding-left: .8em;
+  padding-right: .8em;
+  margin-bottom: .5em;
+
+  cursor: pointer;
+  outline-color: rgba(255,255,255,0.5);
+
+}
+
+.popup-button:hover {
+  background-color: #83ce32;
+  -webkit-box-shadow: 3px 3px 4px 0px rgba(0,0,0,.4);
+  -moz-box-shadow: 3px 3px 4px 0px rgba(0,0,0,.4);
+  box-shadow: 3px 3px 4px 0px rgba(0,0,0,.4);
+}
+
+.disabled {
+  background-color: #c1c1c1;
+  cursor: default;
+  pointer-events: none;
+}
+
+.small-popup {
+  position: absolute;
+  display: block;
+  background-color: rgba(0,0,0,0.3);
+  animation: popup-appear .5s ease-out;
+}
+
+.small-popup .container {
+  position: absolute;
+  display: block;
+
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+
+  border-radius: .4em;
+  border-style: none;
+  background-color: #fff;
+
+  -webkit-box-shadow: 3px 3px 6px 0px rgba(0,0,0,.4);
+  -moz-box-shadow: 3px 3px 6px 0px rgba(0,0,0,.4);
+  box-shadow: 3px 3px 6px 0px rgba(0,0,0,.4);
+}
+
+
+.small-popup h1 {
+  width: 100%;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: left;
+  display: block;
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+
+.small-popup small {
+  width: 100%;
+  color: #4b4b4b;
+  font-size: .7em;
+  font-weight: normal;
+  /*font-style: italic;*/
+  text-align: left;
+  display: block;
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+
+.small-popup p {
+  width: 100%;
+  font-size: .8em;
+  font-weight: normal;
+  text-align: left;
+  display: block;
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+
+.small-popup .photo {
+  float: left;
+  top:0px;
+  margin-top: .5em;
+  margin-bottom: .5em;
+  margin-right: 1em;
+}
+
+.small-popup .button-container {
+  float: left;
+  margin-top: .5em;
+}
+
+/*    Попап информационный    */
+
+#InformationPopup.small-popup {
+  z-index: 6;
+}
+
+#InformationPopup.small-popup .container {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  background-color: #f3f3f3;
+}
+
+#InformationPopup.small-popup .left {
+  left: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#InformationPopup.small-popup .right-bottom {
+  left: 65%;
+  top: 75%;
+  transform: translateY(-50%);
+}
+
+#InformationPopup.small-popup h1 {
+  font-size: 1em;
+  margin: 0px;
+}
+
+#InformationPopup .info-with-rate {
+  margin-bottom: 0px;
+
+}
+
+#InformationPopup .info-rate {
+  font-size: .8em;
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 1em;
+  margin-bottom: .5px;
+}
+
+#InformationPopup .info-rate img{
+  margin: -.3em;
+  width: 2em;
+  height: 2em;
+  vertical-align: middle;
+
+}
+#InformationPopup .info-rate span{
+  padding-top: .2em;
+  display: inline-block;
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+#InformationPopup .popup-button {
+  margin-right: 1em;
+  padding-left: 2em;
+  padding-right: 2em;
+  margin-top: 1.5em;
+}
+
+.list-overlay {
+  display: block;
+  position: absolute;
+  left:0px;
+  right: 0px;
+  height: 86%;
+  top:10%;
+  pointer-events: none;
+
+  background: -moz-linear-gradient(top,  rgba(220,220,220,1) 0%, rgba(220,220,220,0.9) 1%, rgba(220,220,220,0) 10%, rgba(220,220,220,0) 90%, rgba(220,220,220,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(220,220,220,1) 0%,rgba(220,220,220,0.9) 1%,rgba(220,220,220,0) 10%,rgba(220,220,220,0) 90%,rgba(220,220,220,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(220,220,220,1) 0%,rgba(220,220,220,0.9) 1%,rgba(220,220,220,0) 10%,rgba(220,220,220,0) 90%,rgba(220,220,220,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dcdcdc', endColorstr='#dcdcdc',GradientType=0 ); /* IE6-9 */
+}
+
+.list {
+  overflow-y: scroll;
+  display: block;
+  position: absolute;
+  background-color: #f3f3f3;
+  left:0px;
+  right: 0px;
+  height: 86%;
+  top:10%;
+}
+
+
+.small-popup .list::-webkit-scrollbar {
+    width: .8em;
+}
+
+.small-popup .list::-webkit-scrollbar-track {
+  background-color: #d5d3d3;
+}
+
+.small-popup .list::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border-radius: .35em;
+  border: .15em solid #d5d3d3;
+}
+
+/*    Попап информационный скроллируемый   */
+
+#InformationScrollablePopup.small-popup {
+  z-index: 6;
+}
+
+#InformationScrollablePopup.small-popup .container {
+  left: 33%;
+  right: 33%;
+  top: 20%;
+  bottom: 20%;
+  background-color: #dcdcdc;
+}
+
+#InformationScrollablePopup.small-popup h1 {
+  font-size: 1em;
+  margin: 0px;
+}
+
+#InformationScrollablePopup.small-popup .left {
+  left: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#InformationScrollablePopup.small-popup .right-bottom {
+  left: 65%;
+  top: 75%;
+  transform: translateY(-50%);
+}
+
+#InformationScrollablePopup.small-popup .list, #InformationScrollablePopup.small-popup .list-overlay {
+  top: .4em;
+  bottom: .4em;
+  height: 94%;
+}
+
+
+#InformationScrollablePopup.small-popup p {
+  position: relative;
+  width: 95%;
+  margin-left: 1em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
